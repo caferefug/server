@@ -100,7 +100,7 @@ return $db;
                 try {
                         $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
-                       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                       $prepare->bindValue(':tero_id',$id, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
                 } catch (PDOException $e) {
