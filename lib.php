@@ -80,10 +80,11 @@
                        $prepare->execute();
                        $data = $prepare->fetchAll(PDO::FETCH_OBJ);
                } catch (PDOException $e) {
+                echo $e->getMessage();
                 return false;
         }
         foreach ($data as $row) {
-                $data = array('data' => {$row->user_id});
+                $data = {$row->user_id};
         }
         var_dump($data);
         $array = array('count' => $count, 'data' => $data);
