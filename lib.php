@@ -76,7 +76,7 @@
                 }
                 echo "OK3";
                 try {
-                       $sql = 'SELECT tero_id,user_id FROM Teros WHERE id=:tero_id limit :search,10';
+                       $sql = 'SELECT id,user_id FROM Teros WHERE id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
