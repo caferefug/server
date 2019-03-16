@@ -74,7 +74,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
-                       $userData = array();
+                       $Data = array();
                        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
                         $Data[]=array(
                                 'data'=>$row['img_name'],
