@@ -55,7 +55,6 @@ $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_dev
 $db = new PDO($dsn,'2it8h_developer','Line123456789');
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                try {
                 if ($page > 1) {
                         $start = ($page * 10) - 10;
                 }else{
