@@ -69,7 +69,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->execute();
                        $data = array();
                        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-                        $userData[]=array(
+                        $json=array(
                                 'id'=>$row['user_id'],
                                 'name'=>$row['img_name']
                         );
