@@ -8,7 +8,7 @@ if (!isset($_GET['type']) || !isset($_GET['tero_id']) || !isset($_GET['user_id']
 
 if ($_GET['type'] == '0') {
     $db = getdb();
-    $newuser = $db->query("SELECT * FROM WHERE user_id='".$_GET['user_id']."'")->fetchAll();
+    $newuser = $db->query("SELECT * FROM Ranking WHERE user_id='".$_GET['user_id']."'")->fetchAll();
     echo count($newuser);
     $db->query("UPDATE Ranking SET CASE WHEN score <= 0 THEN 0 ELSE score-1 END WHERE user_id='".$_GET['user_id']."'");
 } else if ($_GET['type'] == '1') {
