@@ -71,9 +71,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        while($row = $sth->fetch(PDO::FETCH_ASSOC)){
                         $userData[]=array(
                                 'id'=>$row['user_id'],
-                                'name'=>$row['user_name'],
-                                'age'=>$row['user_age'],
-                                'sex'=>$row['user_sex']
+                                'name'=>$row['img_name']
                         );
                 }
                } catch (PDOException $e) {
