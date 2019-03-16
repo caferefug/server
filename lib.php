@@ -86,7 +86,7 @@
                 echo $e->getMessage();
                 return false;
         }
-        $array = array('count' => $count, $data);
+        $array = array('count' => $count, 'data' => array($data));
         return json_encode($array);
 	}
 
