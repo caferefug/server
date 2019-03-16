@@ -62,7 +62,6 @@ return $db;
                 }else{
                         $start = 1;
                 }
-                echo $page.'<br>'.$start.'<br>';
                 try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
@@ -72,9 +71,7 @@ return $db;
                        $data = array();
                        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
                         $json[]=array(
-                                'id'=>$row['id'],
-                                'userid'=>$row['user_id'],
-                                'name'=>$row['img_name']
+                                'data'=>$row['img_name']
                         );
                 }
                } catch (PDOException $e) {
@@ -95,6 +92,7 @@ return $db;
                 } catch (PDOException $e) {
                         return false;
                 }
+                return array('count' => $count );
         }
         function what_username()
         {
