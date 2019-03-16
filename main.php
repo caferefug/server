@@ -20,7 +20,8 @@ require "lib.php";
 class RouteCheck
 {
 
-        function preg(){
+        function preg(){ 
+                echo "OK1";
                 $URL = $_SERVER['REQUEST_URI'];
                 list ($routes,$count) = route($URL); // http://trunk-hackathon.herokuapp.com/feedback/teroid/userid/type
                 if ($routes[1] == "feedback") {
