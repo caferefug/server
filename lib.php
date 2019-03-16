@@ -68,6 +68,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }else{
                         $start = 1;
                 }
+                echo $start.'<br>';
                 try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
@@ -82,7 +83,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 echo $e->getMessage();
                 return false;
         }
-        echo $json = json_encode($rows);
         return json_encode($json);
 	}
 
