@@ -5,18 +5,18 @@
 		if ($tero_id == null || $user_id == null || $type == null ) {
 			return false;
 		}
-		$dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
-        $db = new PDO($dsn,'2it8h_developer','Line123456789');
-        $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        try {
-        	$sql = 'SELECT tero_id,user_id FROM Feedback WHERE tero_id=:tero_id AND user_id=:user_id';
-        	$prepare = $db->prepare($sql);
-        	$prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
-        	$prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
-        	$prepare->execute();
-        	$exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
-        } catch (PDOException $e) {
+                $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
+                $db = new PDO($dsn,'2it8h_developer','Line123456789');
+                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                try {
+        	       $sql = 'SELECT tero_id,user_id FROM Feedback WHERE tero_id=:tero_id AND user_id=:user_id';
+        	       $prepare = $db->prepare($sql);
+        	       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+        	       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
+        	       $prepare->execute();
+        	       $exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
+                } catch (PDOException $e) {
         	return false;
         }
         if (empty($exsist)) {
@@ -49,9 +49,37 @@
                 }
                 return $data;
         }*/
-	function history($value='',$)
-	{
 
+	function history($tero_id,$page)
+	{
+                $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
+                $db = new PDO($dsn,'2it8h_developer','Line123456789');
+                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                try {
+                        $sql = 'SELECT COUNT(*) id FROM Teros';
+                        $prepare = $db->prepare($sql);
+                        $prepare->execute();
+                        $count = $prepare->fetchColumn();
+                } catch (PDOException $e) {
+                        
+                }if ($count > 1) {
+                        $start = ($count * 10) - 10;
+                }else{
+                        $start = 1;
+                }
+                try {
+                       $sql = 'SELECT tero_id,user_id FROM Teros WHERE tero_id=:tero_id LIMIT :search,10';
+                       $prepare = $db->prepare($sql);
+                       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                       $prepare->bindValue(':search',$start, PDO::PARAM_STR);
+                       $prepare->execute();
+                       $data = $prepare->fetchAll(PDO::FETCH_OBJ);
+               } catch (PDOException $e) {
+                return false;
+        }
+        $array = array('count' => $count, $data);
+        return json_encode();
 	}
 
 

@@ -2,4 +2,4 @@
 
 include "lib.php";
 
-insert_feedback($_GET['teroid'], $_GET['userid'], $_GET['type']);
+insert_feedback($_GET['tero_id'], $_GET['user_id'], $_GET['type']);

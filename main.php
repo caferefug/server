@@ -26,19 +26,15 @@ class RouteCheck
                 if ($routes[1] == "feedback") {
                         insert_feedback($routes[2], $routes[3], $routes[4]);
                         echo "Done";
-                }elseif ($routes[1] == "public") {
-                        echo "Hello world";
+                }elseif ($routes[1] == "api") {
+                        $item = history($routes[2],$routes[3]);
+                        echo $item;
                 }
                 else{
                         dead(404);
                         return true;
                 }
                 return true;
-        }
-
-        function insert_feedback($teroid,$userid,$type)
-        {
-
         }
 }
 
