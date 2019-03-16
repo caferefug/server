@@ -31,7 +31,6 @@
                 $prepare->execute();
         	} catch (PDOException $e) {
                         echo "NO3";
-
         		return false;
         	}
         	return true;
