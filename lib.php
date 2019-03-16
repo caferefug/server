@@ -69,7 +69,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 }else{
                         $start = 1;
                 }
-                echo $count'<br>'.$start.'<br>';
+                echo $count.'<br>'.$start.'<br>';
                 try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
