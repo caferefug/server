@@ -4,7 +4,7 @@ include "lib.php";
 
 
 if (insert_feedback($_GET['tero_id'], $_GET['user_id'], $_GET['type'])) {
-	echo "OK";
+	json_encode(array('code' => 200 ));
 }else{
-	echo "False";
+	json_encode(array('code' => 504));
 }
