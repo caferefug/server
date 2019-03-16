@@ -25,8 +25,9 @@ class RouteCheck
                 list ($routes,$count) = route($URL); // http://trunk-hackathon.herokuapp.com/feedback/teroid/userid/type
                 if ($routes[1] == "feedback") {
                         insert_feedback($routes[2], $routes[3], $routes[4]);
+                        echo "Done";
                 }elseif ($routes[1] == "public") {
-
+                        echo "Hello world";
                 }
                 else{
                         dead(404);
