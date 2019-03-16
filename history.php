@@ -9,7 +9,7 @@ if (isset($_GET['count'])) {
 }else{
 
 $item = history($_GET['tero_id'],$_GET['page']);
-header("Access-Control-Allow-Headers: Origin, X-Requested-With");
+eader("Access-Control-Allow-Origin: *");
 header('Content-type: application/json');
 echo $item;
 }
