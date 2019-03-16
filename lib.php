@@ -83,7 +83,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     'data'=>$row['img_name'],
     );
 }
-        return json_encode($result);
+        return json_encode($Data);
 	}
 
         function tero_counts()
