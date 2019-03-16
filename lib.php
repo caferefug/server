@@ -75,13 +75,14 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
-                       $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+                       $result = $prepare->fetchAll(PDO::FETCH_OBJ);
                } catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;
         }
+        var_dump($data);
             foreach ($result as $row) {
-                $data = $row['img_name'];
+                $data = {$row->img_name};
         }
         echo json_encode($data);
         var_dump($data);
