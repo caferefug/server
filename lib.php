@@ -1,10 +1,15 @@
 <?php
-	function insert_feedback($tero_id = null,$user_id = null,$type = null)
-	{
+function getdb()
+{
 $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
 $db = new PDO($dsn,'2it8h_developer','Line123456789');
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+return $db;
+}
+	function insert_feedback($tero_id = null,$user_id = null,$type = null)
+	{
+                $db = getdb();
 		if ($tero_id == null || $user_id == null || $type == null ) {
 			return false;
 		}
@@ -51,16 +56,12 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	function history($tero_id,$page)
 	{
-$dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
-$db = new PDO($dsn,'2it8h_developer','Line123456789');
-$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = getdb();
                 if ($page > 1) {
                         $start = ($page * 10) - 10;
                 }else{
                         $start = 1;
                 }
-                echo $page.'<br>'.$start.'<br>';
                 try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
@@ -68,10 +69,9 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
                        $data = array();
-                       while($row = $sth->fetch(PDO::FETCH_ASSOC)){
-                        $userData[]=array(
-                                'id'=>$row['user_id'],
-                                'name'=>$row['img_name']
+                       while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
+                        $json[]=array(
+                                'data'=>$row['img_name']
                         );
                 }
                } catch (PDOException $e) {
@@ -83,10 +83,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         function tero_counts()
         {
-$dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
-$db = new PDO($dsn,'2it8h_developer','Line123456789');
-$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = getdb();
                 try {
                         $sql = 'SELECT COUNT(*) id FROM Teros';
                         $prepare = $db->prepare($sql);
@@ -95,21 +92,18 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 } catch (PDOException $e) {
                         return false;
                 }
+                return array('count' => $count );
         }
-        function ranking()
+        function what_username()
         {
-$dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
-$db = new PDO($dsn,'2it8h_developer','Line123456789');
-$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = getdb();
                 try {
-                        $sql = 'SELECT user_id,type FROM Feedback ';
-                        $prepare = $db->prepare($sql);
-                        $prepare->execute();
-                        $result = $prepare->fetchAll(PDO::FETCH_OBJ);
+                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
+                       $prepare = $db->prepare($sql);
+                       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                       $prepare->bindValue(':search',$start, PDO::PARAM_STR);
+                       $prepare->execute();
                 } catch (PDOException $e) {
                         return false;
                 }
-
         }
-
