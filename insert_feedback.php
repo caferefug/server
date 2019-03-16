@@ -10,7 +10,11 @@ if ($_GET['type'] == '0') {
 }
 
 if (insert_feedback($_GET['tero_id'], $_GET['user_id'], $_GET['type'])) {
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With");
+	header('Content-type: application/json');
 	json_encode(array('code' => 200 ));
 }else{
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With");
+	header('Content-type: application/json');
 	json_encode(array('code' => 504));
 }
