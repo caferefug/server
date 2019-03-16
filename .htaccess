@@ -1,8 +1,8 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule (.*)$ index.php
-</IfModule>
-<ifModule mod_headers.c>
+#<IfModule mod_rewrite.c>
+#    RewriteEngine On
+#    RewriteRule (.*)$ index.php
+#</IfModule>
+#<ifModule mod_headers.c>
     Header set Cache-Control "no-cache, no-store, must-revalidate, pre-check=0, post-check=0"
 </IfModule>
 Header always append X-Frame-Options SAMEORIGIN
