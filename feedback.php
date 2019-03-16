@@ -7,7 +7,11 @@
     </head>
     <body>
 <script>
-const sock = new WebSocket("");
+const sock = new WebSocket("ws://trunk-ws-watcher.herokuapp.com:8080");
+
+setInterval(() => {
+sock.send("<?=$_GET['tero_id']?>")
+}, 1000);
 
 sock.addEventListener("open", e => {
     console.log("接続が開かれたときに呼び出されるイベント");
