@@ -94,7 +94,7 @@ return $db;
                 }
                 return array('count' => $count );
         }
-        function what_username()
+        function what_username($id)
         {
                 $db = getdb();
                 try {
