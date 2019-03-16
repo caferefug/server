@@ -77,7 +77,8 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $Data = array();
                        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
                         $Data[]=array(
-                                'data'=>$row['img_name'],
+                                'id'=>$row['id'],
+                                'data'=>$row['img_name']
                         );
                 }
                } catch (PDOException $e) {
