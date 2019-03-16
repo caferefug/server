@@ -21,9 +21,9 @@ class RouteCheck
 
         function preg(){
                 $URL = $_SERVER['REQUEST_URI'];
-                list ($routes,$count) = route($URL);
+                list ($routes,$count) = route($URL);https://aa.com/feedback/
                 if ($routes[1] == "feedback") {
-                        
+
                 }elseif ($routes[1] == "public") {
 
                 }
@@ -34,7 +34,7 @@ class RouteCheck
                 return true;
         }
 
-        function insert_db()
+        function insert_feedback($teroid,$userid,$type)
         {
 
         }
