@@ -23,10 +23,13 @@ class RouteCheck
         function preg(){ 
                 echo "OK1";
                 $URL = $_SERVER['REQUEST_URI'];
-                list ($routes,$count) = route($URL); // http://trunk-hackathon.herokuapp.com/feedback/teroid/userid/type
+                list ($routes,$count) = route($URL); // http://trunk-hackathon.herokuapp.com/feedback/tero_id/user_id/type
                 if ($routes[1] == "feedback") {
-                        insert_feedback($routes[2], $routes[3], $routes[4]);
-                        echo "Done";
+                        if (insert_feedback($routes[2], $routes[3], $routes[4])) {
+                                echo "Done";
+                        }else{
+                                echo "Error";
+                        }
                 }elseif ($routes[1] == "api") {
                         echo "Doing";
                         $item = history($routes[2],$routes[3]);
