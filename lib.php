@@ -74,19 +74,16 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
-                       $Data = array();
+                       $data = array();
                        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
-                        $Data[]=array(
-                                'id'=>$row['id'],
-                                'data'=>$row['img_name']
-                        );
+                        $data[]=$row;
                 }
                } catch (PDOException $e) {
                 echo $e->getMessage();
                 return false;
         }
-
-        return json_encode($Data);
+        echo $json = json_encode($rows);
+        return json_encode($json);
 	}
 
         function tero_counts()
