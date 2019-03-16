@@ -23,7 +23,16 @@ return $db;
                 } catch (PDOException $e) {
         	return false;
         }
-        if (empty($exsist)) {
+                try {
+                       $sql = 'SELECT id FROM Users WHERE user_id=:user_id';
+                       $prepare = $db->prepare($sql);
+                       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
+                       $prepare->execute();
+                       $exsist2 = $prepare->fetchAll(PDO::FETCH_OBJ);
+                } catch (PDOException $e) {
+                return false;
+        }
+        if (empty($exsist) || empty($exsist2)) {
         	try {
         		$sql = 'INSERT INTO Feedback (tero_id,user_id,type) VALUES (:tero,:user,:type)';
         		$prepare = $db->prepare($sql);
@@ -94,7 +103,7 @@ return $db;
                 }
                 return array('count' => $count );
         }
-        function what_username($id)
+/*        function what_username($id)
         {
                 $db = getdb();
                 try {
@@ -106,4 +115,4 @@ return $db;
                 } catch (PDOException $e) {
                         return false;
                 }
-        }
+        }*/
