@@ -82,7 +82,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         var_dump($data);
             foreach ($result as $row) {
-                $data = {$row->img_name};
+                $data = "{$row->img_name}";
         }
         echo json_encode($data);
         var_dump($data);
