@@ -15,7 +15,7 @@ sock.addEventListener("open", e => {
 });
 
 sock.addEventListener("message", e => {
-    console.log(e.msg);
+    console.log(e.data);
     // console.log("サーバーからメッセージを受信したときに呼び出されるイベント");
 });
 
