@@ -7,7 +7,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	function insert_feedback($tero_id = null,$user_id = null,$type = null)
 	{
 		if ($tero_id == null || $user_id == null || $type == null ) {
-                        echo "NO1";
 			return false;
 		}
                 try {
@@ -18,7 +17,6 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         	       $prepare->execute();
         	       $exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
                 } catch (PDOException $e) {
-                        echo "NO2";
         	return false;
         }
         if (empty($exsist)) {
@@ -30,12 +28,10 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $prepare->bindValue(':type',$type, PDO::PARAM_STR);
                 $prepare->execute();
         	} catch (PDOException $e) {
-                        echo "NO3";
         		return false;
         	}
         	return true;
         }else{
-                echo "NO4";
         	return false;
         }
 	}
@@ -80,13 +76,12 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 echo $e->getMessage();
                 return false;
         }
-        var_dump($data);
             foreach ($result as $row) {
-                $data = "{$row->img_name}";
+                echo "{$row->img_name}";
         }
-        echo json_encode($data);
-        var_dump($data);
-        return json_encode($data);
+        echo json_encode($result);
+        var_dump($result);
+        return json_encode($result);
 	}
 
         function tero_counts()
