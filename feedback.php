@@ -9,16 +9,14 @@
 <script>
 const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
 
-setInterval(() => {
-sock.send("<?=$_GET['tero_id']?>")
-}, 1000);
-
 sock.addEventListener("open", e => {
+    sock.send("tero_id 56");
     console.log("接続が開かれたときに呼び出されるイベント");
 });
 
 sock.addEventListener("message", e => {
-    console.log("サーバーからメッセージを受信したときに呼び出されるイベント");
+    console.log(e.data);
+    // console.log("サーバーからメッセージを受信したときに呼び出されるイベント");
 });
 
 sock.addEventListener("close", e => {
