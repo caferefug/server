@@ -16,7 +16,6 @@ if ($_GET['type'] == '0') {
 }
 
 if (insert_feedback($_GET['tero_id'], $_GET['user_id'], $_GET['type'])) {
-
 	header("X-Content-Type-Options: nosniff");
 	header('Access-Control-Allow-Origin:*');
 	header("Content-Type: application/json; charset=UTF-8");
@@ -26,6 +25,4 @@ if (insert_feedback($_GET['tero_id'], $_GET['user_id'], $_GET['type'])) {
 	header('Access-Control-Allow-Origin:*');
 	header("Content-Type: application/json; charset=UTF-8");
 	json_encode(array('code' => 504));
-}else{
-	echo "False";
 }
