@@ -68,7 +68,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
                        $data = array();
-                       while($row = $sth->fetch(PDO::FETCH_ASSOC)){
+                       while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
                         $json=array(
                                 'id'=>$row['user_id'],
                                 'name'=>$row['img_name']
