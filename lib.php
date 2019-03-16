@@ -56,8 +56,9 @@ $db = new PDO($dsn,'2it8h_developer','Line123456789');
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 try {
-                        $sql = 'SELECT COUNT(*) id FROM Teros';
+                        $sql = 'SELECT COUNT(*) id FROM Teros WHERE user_id=:tero_id';
                         $prepare = $db->prepare($sql);
+                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
                         $prepare->execute();
                         $count = $prepare->fetchColumn();
                 } catch (PDOException $e) {
