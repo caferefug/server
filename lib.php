@@ -71,7 +71,7 @@ return $db;
                        $prepare->execute();
                        $data = array();
                        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
-                        $json=array(
+                        $json[]=array(
                                 'id'=>$row['id'],
                                 'userid'=>$row['user_id'],
                                 'name'=>$row['img_name']
