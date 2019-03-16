@@ -7,7 +7,7 @@
     </head>
     <body>
 <script>
-const sock = new WebSocket("ws://trunk-ws-watcher.herokuapp.com:8080");
+const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
 
 setInterval(() => {
 sock.send("<?=$_GET['tero_id']?>")
