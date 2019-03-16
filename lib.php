@@ -56,6 +56,7 @@
 
 	function history($tero_id,$page)
 	{
+                echo "OK1";
                 $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
                 $db = new PDO($dsn,'2it8h_developer','Line123456789');
                 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -66,12 +67,14 @@
                         $prepare->execute();
                         $count = $prepare->fetchColumn();
                 } catch (PDOException $e) {
+                        echo "OK2";
                         return false;
                 }if ($count > 1) {
                         $start = ($count * 10) - 10;
                 }else{
                         $start = 1;
                 }
+                echo "OK3";
                 try {
                        $sql = 'SELECT tero_id,user_id FROM Teros WHERE tero_id=:tero_id LIMIT :search,10';
                        $prepare = $db->prepare($sql);
@@ -80,10 +83,11 @@
                        $prepare->execute();
                        $data = $prepare->fetchAll(PDO::FETCH_OBJ);
                } catch (PDOException $e) {
+                echo "OK4";
                 return false;
         }
         $array = array('count' => $count, $data);
-        return json_encode();
+        return json_encode($array);
 	}
 
 
