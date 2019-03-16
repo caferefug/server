@@ -27,8 +27,10 @@ class RouteCheck
                         insert_feedback($routes[2], $routes[3], $routes[4]);
                         echo "Done";
                 }elseif ($routes[1] == "api") {
+                        echo "Doing";
                         $item = history($routes[2],$routes[3]);
                         echo $item;
+                        echo "Done";
                 }
                 else{
                         dead(404);
