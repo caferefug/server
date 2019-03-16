@@ -3,6 +3,7 @@
 
 require "define.php";
 require "route.php";
+require "lib.php";
 /**
  * Router
  *
@@ -21,9 +22,9 @@ class RouteCheck
 
         function preg(){
                 $URL = $_SERVER['REQUEST_URI'];
-                list ($routes,$count) = route($URL);https://aa.com/feedback/
+                list ($routes,$count) = route($URL); // http://trunk-hackathon.herokuapp.com/feedback/teroid/userid/type
                 if ($routes[1] == "feedback") {
-
+                        insert_feedback($routes[2], $routes[3], $routes[4]);
                 }elseif ($routes[1] == "public") {
 
                 }

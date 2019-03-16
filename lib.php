@@ -35,20 +35,21 @@
         	return false;
         }
 	}
-	function get_feedback($tero_id)
-	{
-		try {
-        	$sql = 'SELECT type FROM Feedback WHERE tero_id=:tero_id';
-        	$prepare = $db->prepare($sql);
-        	$prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
-        	$prepare->execute();
-        	$data = $prepare->fetchAll(PDO::FETCH_OBJ);
-		} catch (PDOException $e) {
-			return false;
-		}
-		return $data;
-	}
-	function FunctionName($value='')
+        /* different server
+        function get_feedback($tero_id)
+        {
+                try {
+                $sql = 'SELECT type FROM Feedback WHERE tero_id=:tero_id';
+                $prepare = $db->prepare($sql);
+                $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                $prepare->execute();
+                $data = $prepare->fetchAll(PDO::FETCH_OBJ);
+                } catch (PDOException $e) {
+                        return false;
+                }
+                return $data;
+        }*/
+	function history($value='',$)
 	{
 
 	}
