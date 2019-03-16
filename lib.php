@@ -56,20 +56,12 @@ $db = new PDO($dsn,'2it8h_developer','Line123456789');
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 try {
-                        $sql = 'SELECT COUNT(*) id FROM Teros WHERE user_id=:tero_id';
-                        $prepare = $db->prepare($sql);
-                        $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
-                        $prepare->execute();
-                        $count = $prepare->fetchColumn();
-                } catch (PDOException $e) {
-                        return false;
-                }
-                if ($count > 1) {
-                        $start = ($count * 10) - 10;
+                if ($page > 1) {
+                        $start = ($page * 10) - 10;
                 }else{
                         $start = 1;
                 }
-                echo $count.'<br>'.$start.'<br>';
+                echo $page.'<br>'.$start.'<br>';
                 try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
