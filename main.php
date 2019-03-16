@@ -30,7 +30,7 @@ class RouteCheck
                         }else{
                                 echo "Error";
                         }
-                }elseif ($routes[1] == "api") {
+                }elseif ($routes[1] == "public") {
                         echo "Doing";
                         $item = history($routes[2],$routes[3]);
                         echo $item;

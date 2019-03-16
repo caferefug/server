@@ -8,7 +8,7 @@
  * @license   MIT-LiCENSE
  */
 define("HTACCESS", ".htaccess");
-define("APPNAME", "");
+define("APPNAME", "api");
 define("WELCOME", "Welcome!");
 define("GOODBY", "Good By...");
 
