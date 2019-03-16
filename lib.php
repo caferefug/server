@@ -3,6 +3,7 @@
 	function insert_feedback($tero_id = null,$user_id = null,$type = null)
 	{
 		if ($tero_id == null || $user_id == null || $type == null ) {
+                        echo "NO1";
 			return false;
 		}
                 $dsn = 'mysql:host=public.2it8h.tyo1.database-hosting.conoha.io;dbname=2it8h_development;charset=utf8';
@@ -17,6 +18,7 @@
         	       $prepare->execute();
         	       $exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
                 } catch (PDOException $e) {
+                        echo "NO2";
         	return false;
         }
         if (empty($exsist)) {
@@ -28,10 +30,13 @@
                 $prepare->bindValue(':type',$type, PDO::PARAM_STR);
                 $prepare->execute();
         	} catch (PDOException $e) {
+                        echo "NO3";
+
         		return false;
         	}
         	return true;
         }else{
+                echo "NO4";
         	return false;
         }
 	}
@@ -62,7 +67,7 @@
                         $prepare->execute();
                         $count = $prepare->fetchColumn();
                 } catch (PDOException $e) {
-                        
+                        return false;
                 }if ($count > 1) {
                         $start = ($count * 10) - 10;
                 }else{
