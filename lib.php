@@ -56,6 +56,14 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	function history($tero_id,$page)
 	{
+                try {
+                        $sql = 'SELECT COUNT(*) id FROM Teros';
+                        $prepare = $db->prepare($sql);
+                        $prepare->execute();
+                        $count = $prepare->fetchColumn();
+                } catch (PDOException $e) {
+                        return false;
+                }
                 if ($count > 1) {
                         $start = ($count * 10) - 10;
                 }else{
