@@ -9,11 +9,14 @@ return $db;
 }
 	function insert_feedback($tero_id = null,$user_id = null,$type = null)
 	{
-        $db = getdb();
-        $db->query("INSERT INTO Feedback (tero_id,user_id,type) VALUES ('$tero_id', '$user_id', '$type')");
 		if ($tero_id == null || $user_id == null || $type == null ) {
 			return false;
 		}
+
+        $db = getdb();
+        try {
+        $db->query("INSERT INTO Feedback (tero_id,user_id,type) VALUES ('$tero_id', '$user_id', '$type')");
+        } catch (PDOException $e) {}
 //        try {
 //        	       $sql = 'SELECT tero_id,user_id FROM Feedback WHERE tero_id=:tero_id AND user_id=:user_id';
 //        	       $prepare = $db->prepare($sql);
