@@ -91,7 +91,8 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
                } catch (PDOException $e) {
                 $e->getMessage();
                 return false;
-
+              }
+   }
 function history($tero_id,$page)
 {
     $db = getdb();
@@ -185,3 +186,4 @@ function what_username($id)
           }
           return json_encode($result,true);
           }
+
