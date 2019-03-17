@@ -6,8 +6,10 @@
         <title>Feedback</title>
     </head>
     <body>
-    <span id="targets">0</span>人がターゲットになっています。<br><br>
-    <span id="feedbackers">0</span>人がフィードバックしてくれています！
+    <h1><span id="targets">0</span>人がターゲットになっています。</h1>
+    <img src="target.png">
+    <h1><span id="feedbackers">0</span>人がフィードバックしてくれています！</h1>
+    <img src="soft-app.png">
 <script>
 const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
 
@@ -44,12 +46,15 @@ sock.addEventListener("error", e => {
     </body>
     <style>
         body{
-            background-color:green;
             text-align:center;
         }
-        span{
-            background-color:#ffffff;
-            color:green;
+        h1{
+            background-color:green;
+            color:white;
+        }
+        img{
+            height:150px;
+            width:auto;
         }
     </style>
 </html>
