@@ -80,7 +80,7 @@ function history($tero_id,$page)
         $prepare = $db->prepare($sql);
         $prepare->bindValue(':id',$tero_id, PDO::PARAM_STR);
         $prepare->execute();
-        $row = $prepare->fetch(PDO::FETCH_ASSOC)
+        $row = $prepare->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         $e->getMessage();
         return false;
