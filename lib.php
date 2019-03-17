@@ -108,7 +108,8 @@ return $db;
             $count = $count++;
             $type[] = "{$row->type}";
   }
-        return json_encode($type);
+  echo "ViewAction OK";
+        return json_encode($type,$count);
     }
 
         function tero_counts()
