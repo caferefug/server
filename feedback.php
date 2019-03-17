@@ -42,4 +42,14 @@ sock.addEventListener("error", e => {
 
 </script>
     </body>
+    <style>
+        body{
+            background-color:green;
+            text-align:center;
+        }
+        span{
+            background-color:#ffffff;
+            color:green;
+        }
+    </style>
 </html>
