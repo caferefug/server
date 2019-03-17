@@ -108,6 +108,7 @@ return $db;
             $count = $count++;
             $type[] = "{$row->type}";
   }
+  ver_dump($type);
   echo "ViewAction OK";
         return json_encode($type,$count);
     }
