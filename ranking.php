@@ -15,7 +15,7 @@ foreach ($result as &$data) {
     //$name_json = str_replace('callback(', '', $name_json);
     //$name_json = str_replace(')', '', $name_json);
     //$data['user_name'] = json_decode($name_json, true)['name'][0][1];
-    $data["user_name"] = $names[i];
+    $data["user_name"] = $names[$i];
     $i++;
 }
 unset($data);
