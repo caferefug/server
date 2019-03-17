@@ -67,7 +67,7 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
    return $data;
    }*/
 
-<<<<<<< HEAD
+
 	function history($tero_id,$page)
 	{
                 $db = getdb();
@@ -91,7 +91,7 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
                } catch (PDOException $e) {
                 $e->getMessage();
                 return false;
-=======
+
 function history($tero_id,$page)
 {
     $db = getdb();
@@ -121,7 +121,6 @@ function history($tero_id,$page)
             $json[]=array(
                     'data'=>$row['img_name']
                     );
->>>>>>> 2019dbe337a75ffb64e0ee49cfccfcadfdeeb0ca
         }
     } catch (PDOException $e) {
         $e->getMessage();
@@ -130,7 +129,7 @@ function history($tero_id,$page)
     return json_encode($json);
 }
 
-<<<<<<< HEAD
+
         function tero_counts()
         {
                 $db = getdb();
@@ -158,7 +157,7 @@ function history($tero_id,$page)
                 }
                 return json_encode($prepare,true);
         }
-=======
+
 function tero_counts()
 {
     $db = getdb();
@@ -172,17 +171,17 @@ function tero_counts()
     }
     return array('count' => $count );
 }
-/*        function what_username($id)
+function what_username($id)
           {
           $db = getdb();
           try {
-          $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
+          $sql = 'SELECT * FROM Users WHERE user_id=:tero_id';
           $prepare = $db->prepare($sql);
           $prepare->bindValue(':tero_id',$id, PDO::PARAM_STR);
-          $prepare->bindValue(':search',$start, PDO::PARAM_STR);
           $prepare->execute();
+          $result = $prepare->fetch(PDO::FETCH_ASSOC);
           } catch (PDOException $e) {
           return false;
           }
-          }*/
->>>>>>> 2019dbe337a75ffb64e0ee49cfccfcadfdeeb0ca
+          return json_encode($result,true);
+          }
