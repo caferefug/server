@@ -90,6 +90,26 @@ return $db;
         }
         return json_encode($json);
 	}
+    function view_action($tero_id)
+    {
+                $db = getdb();
+                try {
+                       $sql = 'SELECT type FROM Feedback WHERE tero_id=:tero_id';
+                       $prepare = $db->prepare($sql);
+                       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                       $prepare->execute();
+                       $result = $prepare->fetchAll(PDO::FETCH_OBJ);
+               } catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+        }
+        $count = 0; // 何人が評価したか
+          foreach ($result as $row) {
+            $count = $count++;
+            $type[] = "{$row->type}";
+  }
+        return json_encode($type);
+    }
 
         function tero_counts()
         {

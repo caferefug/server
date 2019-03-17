@@ -7,6 +7,12 @@ if (isset($_GET['count'])) {
 	header('Access-Control-Allow-Origin:*');
 	header("Content-Type: application/json; charset=UTF-8");
 	json_encode($json);
+}elseif (isset($_GET['tero_id'])) {
+	$json = tero_counts();
+	header("X-Content-Type-Options: nosniff");
+	header('Access-Control-Allow-Origin:*');
+	header("Content-Type: application/json; charset=UTF-8");
+	json_encode($json);
 }else{
 
 $item = history($_GET['tero_id'],$_GET['page']);
