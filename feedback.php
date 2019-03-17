@@ -6,8 +6,8 @@
         <title>Feedback</title>
     </head>
     <body>
+    <span id="targets">0</span>人がターゲットになっています。<br><br>
     <span id="feedbackers">0</span>人がフィードバックしてくれています！
-    <span id="targets">0</span>人がターゲットになっています。
 <script>
 const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
 
