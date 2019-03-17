@@ -76,9 +76,19 @@ return $db;
                         $start = 1;
                 }
                 try {
+                       $sql = 'SELECT * FROM Users WHERE LINEID=:id';
+                       $prepare = $db->prepare($sql);
+                       $prepare->bindValue(':id',$tero_id, PDO::PARAM_STR);
+                       $prepare->execute();
+                       $row = $prepare->fetch(PDO::FETCH_ASSOC)
+               } catch (PDOException $e) {
+                $e->getMessage();
+                return false;
+        }
+                try {
                        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
                        $prepare = $db->prepare($sql);
-                       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+                       $prepare->bindValue(':tero_id',$row, PDO::PARAM_STR);
                        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
                        $prepare->execute();
                        $data = array();
