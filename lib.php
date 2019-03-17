@@ -85,6 +85,7 @@ return $db;
                         );
                 }
                } catch (PDOException $e) {
+                $e->getMessage();
                 return false;
         }
         return json_encode($json);
