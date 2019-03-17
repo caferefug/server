@@ -7,6 +7,7 @@
     </head>
     <body>
     <span id="feedbackers">0</span>人がフィードバックしてくれています！
+    <span id="targets">0</span>人がターゲットになっています。
 <script>
 const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
 
@@ -16,8 +17,17 @@ sock.addEventListener("open", e => {
 });
 
 sock.addEventListener("message", e => {
-    console.log(e.data);
-    document.getElementById("feedbackers").innerText = e.data;
+    const data = e.data.split(' ')[1];
+    switch (e.data.split(' ')[0]) {
+        case "feedback":
+            console.log(data + "feedbacks");
+            document.getElementById("feedbackers").innerText = e.data; 
+        break;
+        case "target":
+            console.log(data + "targets");
+            document.getElementById("targets").innerText = e.data; 
+        break;
+    }
 
     // console.log("サーバーからメッセージを受信したときに呼び出されるイベント");
 });
