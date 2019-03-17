@@ -6,10 +6,12 @@
         <title>Feedback</title>
     </head>
     <body>
-    <span id="feedbackers">0</span>人がフィードバックしてくれています！
-    <span id="targets">0</span>人がターゲットになっています。
+    <h1><span id="targets">0</span>人がターゲットになっています</h1>
+    <img src="target.png">
+    <h1><span id="feedbackers">0</span>人がフィードバックしてくれています！</h1>
+    <img src="soft-app.png">
 <script>
-const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
+const sock = new WebSocket("wss://trunk-ws.herokuapp.com");
 
 sock.addEventListener("open", e => {
     sock.send("tero_id <?=$_GET['tero_id']?>");
@@ -42,4 +44,17 @@ sock.addEventListener("error", e => {
 
 </script>
     </body>
+    <style>
+        body{
+            text-align:center;
+        }
+        h1{
+            background-color:green;
+            color:white;
+        }
+        img{
+            height:150px;
+            width:auto;
+        }
+    </style>
 </html>
