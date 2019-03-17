@@ -6,7 +6,7 @@
         <title>Feedback</title>
     </head>
     <body>
-    <h1><span id="targets">0</span>人がターゲットになっています。</h1>
+    <h1><span id="targets">0</span>人がターゲットになっています</h1>
     <img src="target.png">
     <h1><span id="feedbackers">0</span>人がフィードバックしてくれています！</h1>
     <img src="soft-app.png">
