@@ -9,7 +9,7 @@
     <span id="targets">0</span>人がターゲットになっています。<br><br>
     <span id="feedbackers">0</span>人がフィードバックしてくれています！
 <script>
-const sock = new WebSocket("ws://trunk-ws.herokuapp.com");
+const sock = new WebSocket("wss://trunk-ws.herokuapp.com");
 
 sock.addEventListener("open", e => {
     sock.send("tero_id <?=$_GET['tero_id']?>");
