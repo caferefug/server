@@ -93,43 +93,6 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
                 return false;
               }
    }
-function history($tero_id,$page)
-{
-    $db = getdb();
-    if ($page > 1) {
-        $start = ($page * 10) - 10;
-    }else{
-        $start = 1;
-    }
-    try {
-        $sql = 'SELECT * FROM Users WHERE LINEID=:id';
-        $prepare = $db->prepare($sql);
-        $prepare->bindValue(':id',$tero_id, PDO::PARAM_STR);
-        $prepare->execute();
-        $row = $prepare->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        $e->getMessage();
-        return false;
-    }
-    try {
-        $sql = 'SELECT * FROM Teros WHERE user_id=:tero_id limit :search,10';
-        $prepare = $db->prepare($sql);
-        $prepare->bindValue(':tero_id',$row, PDO::PARAM_STR);
-        $prepare->bindValue(':search',$start, PDO::PARAM_STR);
-        $prepare->execute();
-        $data = array();
-        while($row = $prepare->fetch(PDO::FETCH_ASSOC)){
-            $json[]=array(
-                    'data'=>$row['img_name']
-                    );
-        }
-    } catch (PDOException $e) {
-        $e->getMessage();
-        return false;
-    }
-    return json_encode($json);
-}
-
 
         function tero_counts()
         {
@@ -158,32 +121,3 @@ function history($tero_id,$page)
                 }
                 return json_encode($prepare,true);
         }
-
-function tero_counts()
-{
-    $db = getdb();
-    try {
-        $sql = 'SELECT COUNT(*) id FROM Teros';
-        $prepare = $db->prepare($sql);
-        $prepare->execute();
-        $count = $prepare->fetchColumn();
-    } catch (PDOException $e) {
-        return false;
-    }
-    return array('count' => $count );
-}
-function what_username($id)
-          {
-          $db = getdb();
-          try {
-          $sql = 'SELECT * FROM Users WHERE user_id=:tero_id';
-          $prepare = $db->prepare($sql);
-          $prepare->bindValue(':tero_id',$id, PDO::PARAM_STR);
-          $prepare->execute();
-          $result = $prepare->fetch(PDO::FETCH_ASSOC);
-          } catch (PDOException $e) {
-          return false;
-          }
-          return json_encode($result,true);
-          }
-
