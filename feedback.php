@@ -17,7 +17,7 @@ sock.addEventListener("open", e => {
 });
 
 sock.addEventListener("message", e => {
-    const data = e.data.split(' ')[1];)
+    const data = e.data.split(' ')[1];
     switch (e.data.split(' ')[0]) {
         case "feedback":
             console.log(data + "feedbacks");
