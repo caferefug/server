@@ -85,13 +85,13 @@ return $db;
                         );
                 }
                } catch (PDOException $e) {
-                echo $e->getMessage();
                 return false;
         }
         return json_encode($json);
 	}
     function view_action($tero_id)
     {
+            echo "OK1";
                 $db = getdb();
                 try {
                        $sql = 'SELECT type FROM Feedback WHERE tero_id=:tero_id';
@@ -103,11 +103,13 @@ return $db;
                 echo $e->getMessage();
                 return false;
         }
+            echo "OK2";
         $count = 0; // 何人が評価したか
           foreach ($result as $row) {
             $count = $count++;
             $type[] = "{$row->type}";
   }
+    echo "OK3";
   ver_dump($type);
   echo "ViewAction OK";
         return json_encode($type,$count);
