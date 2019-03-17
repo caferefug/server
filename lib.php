@@ -111,7 +111,7 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
         {
                 $db = getdb();
                 try {
-                        $sql = 'SELECT * FROM Users WHERE LINEID=:id';
+                        $sql = 'SELECT user_id FROM Users WHERE LINEID=:id';
                        $prepare = $db->prepare($sql);
                        $prepare->bindValue(':id',$id, PDO::PARAM_STR);
                        $prepare->execute();
