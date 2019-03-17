@@ -9,44 +9,45 @@ return $db;
 }
 	function insert_feedback($tero_id = null,$user_id = null,$type = null)
 	{
-                $db = getdb();
+        $db = getdb();
+        $db->query("INSERT INTO Feedback (tero_id,user_id,type) VALUES ('$tero_id', '$user_id', '$type')");
 		if ($tero_id == null || $user_id == null || $type == null ) {
 			return false;
 		}
-                try {
-        	       $sql = 'SELECT tero_id,user_id FROM Feedback WHERE tero_id=:tero_id AND user_id=:user_id';
-        	       $prepare = $db->prepare($sql);
-        	       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
-        	       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
-        	       $prepare->execute();
-        	       $exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
-                } catch (PDOException $e) {
-        	return false;
-        }
-                try {
-                       $sql = 'SELECT id FROM Users WHERE user_id=:user_id';
-                       $prepare = $db->prepare($sql);
-                       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
-                       $prepare->execute();
-                       $exsist2 = $prepare->fetchAll(PDO::FETCH_OBJ);
-                } catch (PDOException $e) {
-                return false;
-        }
-        if (empty($exsist) || empty($exsist2)) {
-        	try {
-        		$sql = 'INSERT INTO Feedback (tero_id,user_id,type) VALUES (:tero,:user,:type)';
-        		$prepare = $db->prepare($sql);
-                $prepare->bindValue(':tero',$tero_id, PDO::PARAM_STR);
-                $prepare->bindValue(':user',$user_id, PDO::PARAM_STR);
-                $prepare->bindValue(':type',$type, PDO::PARAM_STR);
-                $prepare->execute();
-        	} catch (PDOException $e) {
-        		return false;
-        	}
-        	return true;
-        }else{
-        	return false;
-        }
+//        try {
+//        	       $sql = 'SELECT tero_id,user_id FROM Feedback WHERE tero_id=:tero_id AND user_id=:user_id';
+//        	       $prepare = $db->prepare($sql);
+//        	       $prepare->bindValue(':tero_id',$tero_id, PDO::PARAM_STR);
+//        	       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
+//        	       $prepare->execute();
+//        	       $exsist = $prepare->fetchAll(PDO::FETCH_OBJ);
+//                } catch (PDOException $e) {
+//        	return false;
+//        }
+//                try {
+//                       $sql = 'SELECT id FROM Users WHERE user_id=:user_id';
+//                       $prepare = $db->prepare($sql);
+//                       $prepare->bindValue(':user_id',$user_id, PDO::PARAM_STR);
+//                       $prepare->execute();
+//                       $exsist2 = $prepare->fetchAll(PDO::FETCH_OBJ);
+//                } catch (PDOException $e) {
+//                return false;
+//        }
+//        if (empty($exsist) || empty($exsist2)) {
+//        	try {
+//        		$sql = 'INSERT INTO Feedback (tero_id,user_id,type) VALUES (:tero,:user,:type)';
+//        		$prepare = $db->prepare($sql);
+//                $prepare->bindValue(':tero',$tero_id, PDO::PARAM_STR);
+//                $prepare->bindValue(':user',$user_id, PDO::PARAM_STR);
+//                $prepare->bindValue(':type',$type, PDO::PARAM_STR);
+//                $prepare->execute();
+//        	} catch (PDOException $e) {
+//        		return false;
+//        	}
+//        	return true;
+//        }else{
+//        	return false;
+//        }
 	}
         /* different server
         function get_feedback($tero_id)
