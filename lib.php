@@ -115,9 +115,9 @@ function insert_feedback($tero_id = null,$user_id = null,$type = null)
                        $prepare = $db->prepare($sql);
                        $prepare->bindValue(':id',$id, PDO::PARAM_STR);
                        $prepare->execute();
-                       $prepare->fetch(PDO::FETCH_ASSOC);
+                       $result = $prepare->fetch(PDO::FETCH_ASSOC);
                 } catch (PDOException $e) {
                         return false;
                 }
-                return json_encode($prepare,true);
+                return json_encode($result,true);
         }
