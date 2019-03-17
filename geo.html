@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>Tero Geo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 html { height: 100% }
 body { height: 100% }
@@ -24,6 +25,9 @@ var center = {
    lat: 34, // 緯度
   lng: 1357 // 経度
 };
+
+$(".gm-style-iw").css("display", "block");
+
 function initMap() {
  map = new google.maps.Map(document.getElementById('map'), { 
      center: center,
