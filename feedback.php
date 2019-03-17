@@ -21,11 +21,11 @@ sock.addEventListener("message", e => {
     switch (e.data.split(' ')[0]) {
         case "feedback":
             console.log(data + "feedbacks");
-            document.getElementById("feedbackers").innerText = e.data; 
+            document.getElementById("feedbackers").innerText = data; 
         break;
         case "target":
             console.log(data + "targets");
-            document.getElementById("targets").innerText = e.data; 
+            document.getElementById("targets").innerText = data; 
         break;
     }
 
