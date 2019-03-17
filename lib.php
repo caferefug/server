@@ -105,11 +105,12 @@ return $db;
         $count = 0; // 何人が評価したか
           foreach ($result as $row) {
             $count = $count++;
-            $type[] = "{$row->type}";
+            $type['act'] = "{$row->type}";
   }
     var_dump($type);
-  echo "ViewAction OK";
-        return json_encode($type,$count);
+    echo $count;
+    $array = array('type' => $type , 'count' => $count);
+        return json_encode($type);
     }
 
         function tero_counts()
